@@ -14,7 +14,7 @@ def start_message(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, parse_mode='HTML')
 
 
-@bot.message_handler(commands=['adminpanel'])
+@bot.message_handler(commands=['panel'])
 def admin_panel(message):
     bot.send_message(chat_id=message.chat.id, text=ADMIN_MESSAGE, parse_mode='HTML')
 
