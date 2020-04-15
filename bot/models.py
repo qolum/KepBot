@@ -3,6 +3,7 @@ from django.db import models
 
 class Teachers(models.Model):
     teachers_name = models.CharField(max_length=20, unique=True, db_index=True, verbose_name='Вчитель')
+    object = models.Manager()
 
     class Meta:
         verbose_name = 'Вчитель'
@@ -14,6 +15,7 @@ class Teachers(models.Model):
 
 class Groups(models.Model):
     group_name = models.CharField(max_length=30, unique=True, db_index=True, verbose_name='Група')
+    object = models.Manager()
 
     class Meta:
         verbose_name = 'Группа'
@@ -66,12 +68,14 @@ class Schedule(models.Model):
                                    ('2', 'Вівторок'),
                                    ('3', 'Середа'),
                                    ('4', 'Четверг'),
-                                   ('5', "П'ятниця")), verbose_name='День тижня')
+                                   ('5', "П'ятниця")),
+                               verbose_name='День тижня')
     object = models.Manager()
 
     class Meta:
         verbose_name = 'Заняття'
         verbose_name_plural = 'Розклад'
+        ordering = ["time"]
 
     def __str__(self):
         return f"{self.group, self.teachers, self.subject, self.time, self.classroom, self.weekday}"
